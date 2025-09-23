@@ -1,0 +1,10 @@
+{
+  "name": "@secure-task-mgmt/dashboard-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "implicitDependencies": [
+      "@secure-task-mgmt/dashboard"
+    ]
+  }
+}
