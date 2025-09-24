@@ -7,23 +7,29 @@ A full-stack task management application with JWT authentication, drag-and-drop 
 ### How to run both backend and frontend apps
 
 1. **Install dependencies:**
+
 ```bash
 npm install
 ```
 
 2. **Start the API server:**
+
 ```bash
 node simple-api-server.js
 ```
+
 The API server will run on `http://localhost:3001`
 
 3. **Start the frontend dashboard (in a new terminal):**
+
 ```bash
 npx nx serve dashboard
 ```
+
 The dashboard will run on `http://localhost:4200` (or `4201` if 4200 is busy)
 
 4. **Access the application:**
+
 - Open your browser and navigate to `http://localhost:4200`
 - Register a new account or login with existing credentials
 
@@ -31,6 +37,7 @@ The dashboard will run on `http://localhost:4200` (or `4201` if 4200 is busy)
 
 1. Clone the repository
 2. Install dependencies:
+
    ```bash
    npm install
    ```
@@ -42,6 +49,7 @@ The dashboard will run on `http://localhost:4200` (or `4201` if 4200 is busy)
 ## 🏗️ Architecture Overview
 
 ### NX Monorepo Layout
+
 - **`apps/dashboard/`**: React frontend with TailwindCSS
 - **`apps/api/`**: NestJS setup (currently not used)
 - **`libs/auth/`**: Shared authentication utilities
@@ -53,6 +61,7 @@ The dashboard will run on `http://localhost:4200` (or `4201` if 4200 is busy)
 ### Current Storage (JSON Files)
 
 **Users** (stored in `users.json`):
+
 ```javascript
 {
   email: string,
@@ -62,6 +71,7 @@ The dashboard will run on `http://localhost:4200` (or `4201` if 4200 is busy)
 ```
 
 **Tasks** (stored in `tasks.json`):
+
 ```javascript
 {
   id: string,
@@ -80,6 +90,7 @@ The dashboard will run on `http://localhost:4200` (or `4201` if 4200 is busy)
 ## 🔐 Access Control Implementation
 
 ### How JWT Authentication Works
+
 - User registers/logs in → receives JWT token
 - Token stored in browser localStorage
 - All API requests include `Authorization: Bearer <token>` header
@@ -89,17 +100,18 @@ The dashboard will run on `http://localhost:4200` (or `4201` if 4200 is busy)
 ## 📡 API Docs
 
 ### Authentication Endpoints
+
 ```http
 POST /register
 Content-Type: application/json
 {
   "username": "string",
-  "email": "string", 
+  "email": "string",
   "password": "string"
 }
 Response: { "success": true, "token": "jwt_token", "username": "string" }
 
-POST /login  
+POST /login
 Content-Type: application/json
 {
   "email": "string",
@@ -111,6 +123,7 @@ Response: { "success": true, "token": "jwt_token", "username": "string" }
 ### Task Management Endpoints
 
 **Create Task:**
+
 ```http
 POST /tasks
 Authorization: Bearer <jwt_token>
@@ -126,6 +139,7 @@ Response: { "success": true, "task": Task }
 ```
 
 **List Tasks:**
+
 ```http
 GET /tasks
 Authorization: Bearer <jwt_token>
@@ -133,13 +147,14 @@ Response: { "success": true, "tasks": Task[] }
 ```
 
 **Update Task:**
+
 ```http
 PUT /tasks/:id
 Authorization: Bearer <jwt_token>
 Content-Type: application/json
 {
   "title": "string (optional)",
-  "description": "string (optional)", 
+  "description": "string (optional)",
   "status": "pending|in-progress|completed (optional)",
   "priority": "low|medium|high (optional)",
   "category": "Personal|Work|Study (optional)",
@@ -149,6 +164,7 @@ Response: { "success": true, "task": Task }
 ```
 
 **Delete Task:**
+
 ```http
 DELETE /tasks/:id
 Authorization: Bearer <jwt_token>
@@ -156,6 +172,7 @@ Response: { "success": true, "message": "Task deleted successfully" }
 ```
 
 **Health Check:**
+
 ```http
 GET /api/health
 Response: { "status": "ok", "message": "API is working" }
@@ -165,9 +182,9 @@ Response: { "status": "ok", "message": "API is working" }
 - **User Authentication**: Register/Login with JWT
 - **Task CRUD Operations**: Create, Read, Update, Delete tasks
 - **Kanban Board**: Drag-and-drop interface with 3 columns (TO DO, IN PROGRESS, DONE)
-- **Task Management**: 
+- **Task Management**:
   - Categories (Personal, Work, Study)
-  - Priority levels (Low, Medium, High) 
+  - Priority levels (Low, Medium, High)
   - Due dates with overdue detection
   - Optional descriptions
 - **Filtering & Sorting**: Filter by category, sort by date/priority/alphabetical
@@ -178,7 +195,7 @@ Response: { "status": "ok", "message": "API is working" }
 - **React + TailwindCSS**: Modern UI with responsive design
 - **Real-time Updates**: Immediate UI feedback for all operations
 - **Form Validation**: Client-side validation for required fields
-- **User Experience**: 
+- **User Experience**:
   - Clear Form functionality
   - Inline task editing
   - Visual feedback for overdue tasks
@@ -201,3 +218,4 @@ Response: { "status": "ok", "message": "API is working" }
 ---
 
 **Built with modern web technologies - fully functional task management system with authentication and drag-and-drop Kanban board.**
+```
