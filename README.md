@@ -4,15 +4,10 @@ A full-stack task management application with JWT authentication, drag-and-drop 
 
 ## 🚀 Setup Instructions
 
-### Prerequisites
-- Node.js (v18+ recommended)
-- npm or yarn
-
 ### How to run both backend and frontend apps
 
-1. **Clone and install dependencies:**
+1. **Install dependencies:**
 ```bash
-cd secure-task-mgmt
 npm install
 ```
 
@@ -32,10 +27,6 @@ The dashboard will run on `http://localhost:4200` (or `4201` if 4200 is busy)
 - Open your browser and navigate to `http://localhost:4200`
 - Register a new account or login with existing credentials
 
-### Environment Setup
-- **JWT secrets**: Configured in `simple-api-server.js` (production should use environment variables)
-- **Database config**: Currently using JSON file storage (`users.json`, `tasks.json`) for simplicity
-
 ### Installation
 
 1. Clone the repository
@@ -50,72 +41,50 @@ The dashboard will run on `http://localhost:4200` (or `4201` if 4200 is busy)
 
 ## 🏗️ Architecture Overview
 
-### NX Monorepo Layout and Rationale
+### NX Monorepo Layout
 - **`apps/dashboard/`**: React frontend with TailwindCSS
-- **`apps/api/`**: Original NestJS setup (replaced with Express for simplicity)
+- **`apps/api/`**: NestJS setup (currently not used)
 - **`libs/auth/`**: Shared authentication utilities
 - **`libs/data/`**: Shared data models and DTOs
 - **`simple-api-server.js`**: Express.js API server (main backend)
 
-### Explanation of Shared Libraries/Modules
-- **Authentication Library**: JWT token handling and validation
-- **Data Models**: TypeScript interfaces for User and Task entities
-- **Shared utilities**: Common functions used across apps
-
 ## 📊 Data Model Explanation
 
-### Database Schema (JSON File Storage)
+### Current Storage (JSON Files)
 
-```typescript
-interface User {
-  email: string;
-  username: string;
-  passwordHash: string;
-}
-
-interface Task {
-  id: string;
-  title: string;
-  description: string | null;
-  status: 'pending' | 'in-progress' | 'completed';
-  priority: 'low' | 'medium' | 'high';
-  category: 'Personal' | 'Work' | 'Study';
-  dueDate: string | null;
-  userEmail: string;
-  createdAt: string;
-  updatedAt: string;
+**Users** (stored in `users.json`):
+```javascript
+{
+  email: string,
+  username: string,
+  passwordHash: string
 }
 ```
 
-### ERD/Diagram
-```
-Users (1) ──────────── (*) Tasks
-├── email (PK)              ├── id (PK)
-├── username                ├── title
-└── passwordHash            ├── description
-                           ├── status
-                           ├── priority
-                           ├── category
-                           ├── dueDate
-                           ├── userEmail (FK)
-                           ├── createdAt
-                           └── updatedAt
+**Tasks** (stored in `tasks.json`):
+```javascript
+{
+  id: string,
+  title: string,
+  description: string | null,
+  status: 'pending' | 'in-progress' | 'completed',
+  priority: 'low' | 'medium' | 'high',
+  category: 'Personal' | 'Work' | 'Study',
+  dueDate: string | null,
+  userEmail: string,
+  createdAt: string,
+  updatedAt: string
+}
 ```
 
 ## 🔐 Access Control Implementation
 
-### Current Implementation
-- **JWT Authentication**: Token-based authentication for all API endpoints
-- **User Isolation**: Each user can only access their own tasks
-- **Protected Routes**: All task operations require valid JWT token
-
-### How JWT Auth Integrates with Access Control
-- Login generates JWT token with user information
-- Token is stored in localStorage and attached to all API requests
-- Server validates token on each protected endpoint
-- Tasks are filtered by user email from JWT payload
-
-*Note: Advanced role-based access control (organizations, roles, permissions) planned for future implementation*
+### How JWT Authentication Works
+- User registers/logs in → receives JWT token
+- Token stored in browser localStorage
+- All API requests include `Authorization: Bearer <token>` header
+- Server validates token and extracts user info
+- Each user can only access their own tasks (filtered by userEmail)
 
 ## 📡 API Docs
 
@@ -222,46 +191,13 @@ Response: { "status": "ok", "message": "API is working" }
 - **Error Handling**: Comprehensive error responses
 - **Data Validation**: Server-side input validation
 
-## 🔮 Future Considerations
+## ️ Tech Stack
 
-### Advanced Role Delegation
-- Implement organization hierarchy (2-level)
-- Add roles: Owner, Admin, Viewer
-- Role-based permissions system
-
-### Production-Ready Security
-- **JWT refresh tokens**: Implement token refresh mechanism
-- **CSRF protection**: Add cross-site request forgery protection  
-- **RBAC caching**: Efficient role-based access control caching
-
-### Scaling Permission Checks Efficiently
-- Database indexing for large-scale permissions
-- Caching layer for frequently accessed permissions
-- Optimized query patterns for role inheritance
-
-### Additional Enhancements
-- **Database Migration**: Move from JSON files to PostgreSQL/SQLite
-- **Audit Logging**: Track user actions and system events
-- **Task Analytics**: Completion visualization and productivity metrics
-- **Real-time Collaboration**: WebSocket integration for live updates
-- **Mobile App**: Native mobile application
-- **Email Notifications**: Task reminders and updates
-
-## 🛠️ Tech Stack
-
-- **Frontend**: React, TypeScript, TailwindCSS, Vite
+- **Frontend**: React, TypeScript, TailwindCSS, NX, Vite
 - **Backend**: Express.js, Node.js, JWT, bcryptjs
-- **Storage**: JSON files (development), PostgreSQL planned (production)
-- **Tools**: NX Monorepo, ESLint, Prettier
-- **Authentication**: JWT tokens with secure password hashing
-
-## 📝 Development Notes
-
-- **Current State**: Fully functional task management system with all core features
-- **Architecture**: Monorepo structure ready for scalability
-- **Security**: Basic JWT authentication implemented, production security planned
-- **Performance**: Optimized for development, production optimizations planned
+- **Storage**: JSON files (`users.json`, `tasks.json`)
+- **Tools**: NX Monorepo, ESLint
 
 ---
 
-Built with ❤️ using modern web technologies and best practices.
+**Built with modern web technologies - fully functional task management system with authentication and drag-and-drop Kanban board.**
