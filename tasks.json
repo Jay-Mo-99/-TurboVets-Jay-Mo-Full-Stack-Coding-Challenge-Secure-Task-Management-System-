@@ -3,13 +3,13 @@
     "id": "1758683856043",
     "title": "Movie Night",
     "description": null,
-    "status": "completed",
+    "status": "pending",
     "priority": "low",
     "category": "Personal",
     "dueDate": "2025-09-24T23:17",
     "userEmail": "jaym991776@gmail.com",
     "createdAt": "2025-09-24T03:17:36.043Z",
-    "updatedAt": "2025-09-24T03:22:31.677Z"
+    "updatedAt": "2025-09-24T03:26:27.183Z"
   },
   {
     "id": "1758683885755",
@@ -75,13 +75,13 @@
     "id": "1758684067246",
     "title": "Udemy Three.js ",
     "description": null,
-    "status": "in-progress",
+    "status": "pending",
     "priority": "medium",
     "category": "Study",
     "dueDate": "2025-10-04T23:50",
     "userEmail": "jaym991776@gmail.com",
     "createdAt": "2025-09-24T03:21:07.246Z",
-    "updatedAt": "2025-09-24T03:22:20.661Z"
+    "updatedAt": "2025-09-24T03:26:17.588Z"
   },
   {
     "id": "1758684108270",
