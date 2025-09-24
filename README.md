@@ -178,41 +178,6 @@ GET /api/health
 Response: { "status": "ok", "message": "API is working" }
 ```
 
-## ✨ Features Implemented
-
-### Core Features ✅
-
-- **User Authentication**: Register/Login with JWT
-- **Task CRUD Operations**: Create, Read, Update, Delete tasks
-- **Kanban Board**: Drag-and-drop interface with 3 columns (TO DO, IN PROGRESS, DONE)
-- **Task Management**:
-  - Categories (Personal, Work, Study)
-  - Priority levels (Low, Medium, High)
-  - Due dates with overdue detection
-  - Optional descriptions
-- **Filtering & Sorting**: Filter by category, sort by date/priority/alphabetical
-- **Responsive Design**: Mobile-friendly interface
-- **Data Persistence**: JSON file storage maintains data across server restarts
-
-### Frontend Features ✅
-
-- **React + TailwindCSS**: Modern UI with responsive design
-- **Real-time Updates**: Immediate UI feedback for all operations
-- **Form Validation**: Client-side validation for required fields
-- **User Experience**:
-  - Clear Form functionality
-  - Inline task editing
-  - Visual feedback for overdue tasks
-  - Task count displays
-
-### Backend Features ✅
-
-- **Express.js API**: RESTful API with proper HTTP status codes
-- **JWT Authentication**: Secure token-based authentication
-- **CORS Configuration**: Proper cross-origin resource sharing
-- **Error Handling**: Comprehensive error responses
-- **Data Validation**: Server-side input validation
-
 ## 🔮 Future Considerations
 
 ### Advanced Role & Permission Management
