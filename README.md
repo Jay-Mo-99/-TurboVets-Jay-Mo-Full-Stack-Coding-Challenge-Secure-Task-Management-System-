@@ -1,4 +1,161 @@
-# SecureTaskMgmt
+# Secu# Secure Task Management System
+
+A full-stack secure task management application built with NestJS backend and React frontend using NX monorepo.
+
+## Features
+
+### ✅ Authentication & Security
+- User registration and login
+- JWT-based authentication
+- Password hashing with bcryptjs
+- Token-based API protection
+
+### ✅ Task Management
+- Create tasks with title, description, and priority levels
+- Update task status (pending, in-progress, completed)
+- Delete tasks
+- View all user tasks
+- User-specific task isolation
+
+### ✅ Frontend Dashboard
+- Modern React-based UI with Tailwind CSS
+- Responsive design
+- Real-time task status updates
+- Intuitive user interface
+
+## Tech Stack
+
+### Backend (NestJS API)
+- **Framework**: NestJS with TypeScript
+- **Authentication**: JWT tokens, bcryptjs password hashing
+- **Architecture**: Modular structure with Controllers, Services, and Entities
+- **API**: RESTful endpoints with proper error handling
+
+### Frontend (React Dashboard)
+- **Framework**: React with TypeScript
+- **Styling**: Tailwind CSS
+- **State Management**: React hooks
+- **HTTP Client**: Fetch API
+
+### Development Tools
+- **Monorepo**: NX workspace
+- **Testing**: Jest, Cypress
+- **Linting**: ESLint
+- **Build**: Vite (frontend), Webpack (backend)
+
+## Getting Started
+
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   - Copy `.env.example` to `.env` (if exists)
+   - Update `JWT_SECRET` in `.env` file
+
+### Running the Application
+
+#### Start Backend API:
+```bash
+npx nx serve api
+```
+Backend will run on http://localhost:3000
+
+#### Start Frontend Dashboard:
+```bash
+npx nx serve dashboard
+```
+Frontend will run on http://localhost:4200
+
+### API Endpoints
+
+#### Authentication
+- `POST /api/user/register` - Register new user
+- `POST /api/user/login` - Login user
+
+#### Tasks (Protected - requires JWT token)
+- `GET /api/tasks` - Get all tasks for authenticated user
+- `POST /api/tasks` - Create new task
+- `GET /api/tasks/:id` - Get specific task
+- `PUT /api/tasks/:id` - Update task
+- `DELETE /api/tasks/:id` - Delete task
+
+### Usage
+
+1. **Register**: Create a new account with email, username, and password
+2. **Login**: Sign in to access the dashboard
+3. **Create Tasks**: Add new tasks with title, description, and priority
+4. **Manage Tasks**: Update status (pending → in-progress → completed) or delete tasks
+5. **View Tasks**: See all your tasks with status and priority indicators
+
+## Security Features
+
+- Password hashing using bcryptjs
+- JWT token-based authentication
+- User-specific data isolation
+- Protected API endpoints
+- CORS configuration
+- Input validation and sanitization
+
+## Project Structure
+
+```
+apps/
+├── api/              # NestJS backend
+│   ├── src/app/
+│   │   ├── user/     # User authentication module
+│   │   ├── task/     # Task management module
+│   │   └── auth/     # Authentication utilities
+├── dashboard/        # React frontend
+└── *-e2e/           # E2E tests
+
+libs/
+├── auth/            # Shared authentication library
+└── data/            # Shared DTOs and interfaces
+```
+
+## Development Commands
+
+```bash
+# Build specific app
+npx nx build api
+npx nx build dashboard
+
+# Run tests
+npx nx test api
+npx nx test dashboard
+
+# Run e2e tests
+npx nx e2e api-e2e
+npx nx e2e dashboard-e2e
+
+# Lint
+npx nx lint api
+npx nx lint dashboard
+
+# View dependency graph
+npx nx graph
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+---
+
+Built with ❤️ using NX, NestJS, and ReacteTaskMgmt
 
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 

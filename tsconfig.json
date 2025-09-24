@@ -10,13 +10,7 @@
       "path": "./apps/dashboard"
     },
     {
-      "path": "./libs"
-    },
-    {
-      "path": "./data"
-    },
-    {
-      "path": "./auth"
+      "path": "./apps/api"
     }
   ]
 }

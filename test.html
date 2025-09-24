@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+<body>
+    <h1>API Test</h1>
+    <button onclick="testRegister()">Test Register</button>
+    <button onclick="testLogin()">Test Login</button>
+    <div id="result"></div>
+
+    <script>
+        async function testRegister() {
+            try {
+                const response = await fetch('http://localhost:3001/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: 'testuser',
+                        email: 'test@test.com',
+                        password: 'password123'
+                    })
+                });
+                const data = await response.json();
+                document.getElementById('result').innerHTML = `Register: ${response.status} - ${JSON.stringify(data)}`;
+            } catch (error) {
+                document.getElementById('result').innerHTML = `Register Error: ${error.message}`;
+            }
+        }
+
+        async function testLogin() {
+            try {
+                const response = await fetch('http://localhost:3001/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: 'test@test.com',
+                        password: 'password123'
+                    })
+                });
+                const data = await response.json();
+                document.getElementById('result').innerHTML = `Login: ${response.status} - ${JSON.stringify(data)}`;
+            } catch (error) {
+                document.getElementById('result').innerHTML = `Login Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
