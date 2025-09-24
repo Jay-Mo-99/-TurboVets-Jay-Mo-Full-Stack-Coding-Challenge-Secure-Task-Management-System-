@@ -176,9 +176,12 @@ Response: { "success": true, "message": "Task deleted successfully" }
 ```http
 GET /api/health
 Response: { "status": "ok", "message": "API is working" }
+```
+
 ## ✨ Features Implemented
 
 ### Core Features ✅
+
 - **User Authentication**: Register/Login with JWT
 - **Task CRUD Operations**: Create, Read, Update, Delete tasks
 - **Kanban Board**: Drag-and-drop interface with 3 columns (TO DO, IN PROGRESS, DONE)
@@ -192,6 +195,7 @@ Response: { "status": "ok", "message": "API is working" }
 - **Data Persistence**: JSON file storage maintains data across server restarts
 
 ### Frontend Features ✅
+
 - **React + TailwindCSS**: Modern UI with responsive design
 - **Real-time Updates**: Immediate UI feedback for all operations
 - **Form Validation**: Client-side validation for required fields
@@ -202,6 +206,7 @@ Response: { "status": "ok", "message": "API is working" }
   - Task count displays
 
 ### Backend Features ✅
+
 - **Express.js API**: RESTful API with proper HTTP status codes
 - **JWT Authentication**: Secure token-based authentication
 - **CORS Configuration**: Proper cross-origin resource sharing
@@ -218,4 +223,7 @@ Response: { "status": "ok", "message": "API is working" }
 ---
 
 **Built with modern web technologies - fully functional task management system with authentication and drag-and-drop Kanban board.**
+
+```
+
 ```
