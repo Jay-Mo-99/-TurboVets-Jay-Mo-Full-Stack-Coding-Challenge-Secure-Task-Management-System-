@@ -215,4 +215,3 @@ Response: { "status": "ok", "message": "API is working" }
 - **Tools**: NX Monorepo, ESLint
 
 
-```
