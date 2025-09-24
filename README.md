@@ -214,10 +214,5 @@ Response: { "status": "ok", "message": "API is working" }
 - **Storage**: JSON files (`users.json`, `tasks.json`)
 - **Tools**: NX Monorepo, ESLint
 
----
-
-**Built with modern web technologies - fully functional task management system with authentication and drag-and-drop Kanban board.**
-
-```
 
 ```
